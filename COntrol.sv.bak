@@ -1,0 +1,30 @@
+module Control(
+	input [6:0] w_OP,
+	input [2:0] w_Funct3,
+	input [5:0] w_Funct7,
+	output [2:0] w_ULAControl,
+	output w_ULASrc,
+	output w_RegWrite
+);
+
+  always @(*)begin
+		case(OP)
+			7'b0110011: case(Funct3)
+							  3'b000: case(Funct7)
+											 7'b0000000: w_RegWrite=1, w_ULASrc = 0, w_ULAControl = 000;
+											 7'b0100000: w_RegWrite=1, w_ULASrc = 0, w_ULAControl = 001;
+											 default: w_RegWrite=0, w_ULASrc = 0, w_ULAControl = 000;
+										 endcase
+							  3b111: w_RegWrite=1, w_ULASrc = 0, w_ULAControl = 010;
+							  3b110: w_RegWrite=1, w_ULASrc = 0, w_ULAControl = 011;
+							  3b010: w_RegWrite=1, w_ULASrc = 0, w_ULAControl = 101;
+							  default: w_RegWrite=0, w_ULASrc = 0, w_ULAControl = 000;
+							endcase
+			7'b0010011: w_RegWrite=1, w_ULASrc = 1, w_ULAControl = 000;
+			default: w_RegWrite=0, w_ULASrc = 0, w_ULAControl = 000;
+		endcase
+  end
+ endmodule
+							  
+											 
+			

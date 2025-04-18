@@ -1,0 +1,12 @@
+module MuxPC(
+	input PCSrc,
+	input ImmPC,
+	input PCp4,
+	output PCIN
+);
+
+	always @(*)begin
+		PCSrc = B && Zero;
+	end
+	
+endmodule

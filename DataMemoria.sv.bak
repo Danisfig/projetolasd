@@ -1,0 +1,12 @@
+module DataMemoria(
+	input [9:0] A,
+	input [31:0] WD,
+	input WE,
+	input rst,
+	input clk,
+	output [31:0] RD
+
+);
+
+	always @(*)begin
+		case ()

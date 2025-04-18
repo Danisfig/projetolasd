@@ -1,0 +1,13 @@
+module SomadorPCp4(
+
+	input [31:0] PC_atual,
+	output [31:0] PCp4
+);
+
+	always@(*)begin 
+	
+		PCp4 = PC_atual + 4;
+	
+	end
+endmodule
+

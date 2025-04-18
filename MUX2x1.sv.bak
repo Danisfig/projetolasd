@@ -1,0 +1,15 @@
+module mux2x1 (
+	input control,
+	input rd2,
+	output w_SrcB
+);
+
+	always @(*)begin
+		case(control)
+			1'b1: w_SrcB = rd2;
+			1'b0: w_SrcB = 8'h07;
+			default: w_SrcB = 0;
+		endcase
+	end
+	
+endmodule

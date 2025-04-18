@@ -1,0 +1,12 @@
+module SomadorIMM (
+	input Imm,
+	input PC_atual,
+	output PC_Imm
+);
+
+	always(*)begin 
+	
+		PC_Imm = Imm + PC_atual;
+	
+	end
+endmodule

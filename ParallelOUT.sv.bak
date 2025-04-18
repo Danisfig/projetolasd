@@ -1,0 +1,19 @@
+module ParallelOUT(
+	input EN,
+	input [7:0] Adress,
+	input [7:0] RegData,
+	output [7:0] DataOut
+);
+
+	always@(*)begin 
+	
+		int control;
+		
+		control = (Adress == 8'hFF) ? 1'b1 : 1'b0;
+		
+		control & EN;
+
+	
+	
+	end
+endmodule

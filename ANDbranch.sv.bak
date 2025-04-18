@@ -1,0 +1,11 @@
+module ANDbranch(
+	input B,
+	input Zero,
+	output PCSrc
+);
+
+	always @(*)begin
+		PCSrc = B && Zero;
+	end
+	
+endmodule
