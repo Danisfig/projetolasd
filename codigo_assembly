@@ -1,0 +1,36 @@
+    # x1 = Entrada
+    # x2 = 1 para entradas iguais
+    # x3 = valor de A
+    # x4 = valor de B
+    # x5 = acumulador (resultado)
+    # x6 = contador
+    # x7 = incremento (1)
+    # x8 = x8 = 1 Acaba o programa
+    # x9 = Valor do deslocamento
+
+    #lw   x1, 0xFF(x0)      # x1 = Dados
+    addi x1,x0,0xFF
+    andi x3, x1, 0x0F       # mascara para valor A [VALOR FINAL]
+    andi x4, x1, 0xF0        # mascara para valor B
+    addi x9, x0, 0x4         # Colocando em x9 o valor 4, para fzer o deslocamento a seguir
+    srl x4, x4, x9           # Valor já deslocado de B [VALOR FINAL]
+    
+
+    addi x5, x0, 0           # x5 = resultado = 0
+    addi x6, x0, 0           # x6 = contador = 0
+    addi x7, x0, 1           # x7 = incremento = 1
+    
+    bne x3,x4, LOOP
+    addi x2,x0,0x1           #x2 == 1 se os numeros forem iguais
+
+LOOP:
+    slt x8, x6, x4           # x8 = 1 se contador < B
+    beq x8, x0, FIM          # se x8 == 0, sair do loop
+
+    add x5, x5, x3           # resultado += A
+    addi x6, x6, 1           # contador += 1
+    j LOOP                   # repete
+
+FIM:
+    #sw x5, 0xFF(x0)          # salva resultado na memória
+    
